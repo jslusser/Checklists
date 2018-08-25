@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol AddItemViewControllerDelegate: class {
+    func addItemViwControllerDidCancel(_ controller: AddItemViewController)
+    func addItenViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem)
+}
+
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
@@ -24,18 +29,27 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         textField.becomeFirstResponder()
     }
     
+       weak var delegate: AddItemViewControllerDelegate?
+    
     @IBAction func cancel() {
         navigationController?.popViewController(animated: true)
+        delegate?.addItemViwControllerDidCancel(self)
     }
     
     @IBAction func done() {
-        navigationController?.popViewController(animated: true)
-        print("Contents of text field: \(textField.text)")
+//        navigationController?.popViewController(animated: true)
+//        print("Contents of text field: \(textField.text)")
+        let item = ChecklistItem()
+        item.text = textField.text!
+        item.checked = false
+        delegate?.addItenViewController(self, didFinishAdding: item)
     }
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    
+
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
