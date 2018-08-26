@@ -9,14 +9,19 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
+        let newRowIndex = items.count
+        items.append(item)
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: [indexPath], with: .automatic)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
     func addItemViwControllerDidCancel(_ controller: AddItemViewController) {
         navigationController?.popViewController(animated: true)
     }
-    
-    func addItenViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
-        navigationController?.popViewController(animated: true)
-    }
-    
 
     var items:[ChecklistItem]
     
@@ -105,6 +110,14 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
 //    var row3Checked = false
 //    var row4Checked = false
     
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItem" {
+            let controller = segue.destination as! AddItemViewController
+            controller.delegate = self
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
