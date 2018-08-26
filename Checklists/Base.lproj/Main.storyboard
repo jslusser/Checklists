@@ -17,22 +17,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="E6e-fm-Zcl">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="E6e-fm-Zcl">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E6e-fm-Zcl" id="uWW-aQ-71d">
-                                    <rect key="frame" x="0.0" y="0.0" width="280" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="252" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbN-XM-uVj">
-                                            <rect key="frame" x="16" y="11" width="256" height="22"/>
+                                            <rect key="frame" x="37" y="11" width="207" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4e-Il-JYf">
+                                            <rect key="frame" x="16" y="9" width="13" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Pas-6l-XrN" kind="show" identifier="EditItem" trigger="accessoryAction" id="Alr-s3-ZSw"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -133,4 +143,7 @@
             <point key="canvasLocation" x="82.5" y="52.816901408450704"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Alr-s3-ZSw"/>
+    </inferredMetricsTieBreakers>
 </document>

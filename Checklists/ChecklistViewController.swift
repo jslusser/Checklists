@@ -229,10 +229,14 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
 //        }
         
         //if isChecked {
+        let label = cell.viewWithTag(1001) as! UILabel
+        
         if item.checked {
-            cell.accessoryType = .checkmark
+            //cell.accessoryType = .checkmark
+            label.text = "√"
         } else {
-            cell.accessoryType = .none
+            //cell.accessoryType = .none
+            label.text = ""
         }
         
     }
