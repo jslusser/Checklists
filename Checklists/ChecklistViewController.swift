@@ -9,6 +9,18 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+    
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklistItem) {
+        if let index = items.index(of: item) {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(for: cell, with: item)
+            }
+        }
+        navigationController?.popViewController(animated: true)
+    }
+    
     func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
         let newRowIndex = items.count
         items.append(item)
@@ -115,6 +127,12 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         if segue.identifier == "AddItem" {
             let controller = segue.destination as! AddItemViewController
             controller.delegate = self
+        } else if segue.identifier == "EditItem" {
+            let controller = segue.destination as! AddItemViewController
+            controller.delegate = self
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.itemToEdit = items[indexPath.row]
+            }
         }
     }
 

@@ -108,7 +108,7 @@
                                 <action selector="cancel" destination="Pas-6l-XrN" id="88b-dw-oix"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="rxO-ws-0wn">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="rxO-ws-0wn">
                             <connections>
                                 <action selector="done" destination="Pas-6l-XrN" id="1vk-6F-BhW"/>
                             </connections>
